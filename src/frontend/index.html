@@ -6,7 +6,30 @@
         <title>Book Keeping</title>
     </head>
     <body>
-        <input type="text" name="entryName" placeholder="Enter an Entry" />
-        <input type="text" name="price" placeholder="Enter a price" />
+        <form onsubmit="submitForm(event)" method="post">
+            <input
+                id="entryName"
+                type="text"
+                name="entryName"
+                placeholder="Enter an Entry"
+            />
+            <input
+                id="price"
+                type="text"
+                name="price"
+                placeholder="Enter a price"
+            />
+            <input type="submit" value="Submit" />
+        </form>
+
+        <script>
+            async function submitForm(event) {
+                event.preventDefault();
+                const data = new FormData(event.currentTarget);
+                const payload = Object.fromEntries(data.entries());
+
+                console.log("Payload payload", payload);
+            }
+        </script>
     </body>
 </html>
