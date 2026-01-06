@@ -1,0 +1,7 @@
+html {
+    zoom: 3.5;
+}
+
+body {
+    background-color: oklch(0.5 0 0);
+}

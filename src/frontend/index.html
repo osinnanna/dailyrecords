@@ -4,25 +4,37 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Book Keeping</title>
+        <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-        <form onsubmit="submitForm(event)" method="post">
-            <input
-                id="entryName"
-                type="text"
-                name="entryName"
-                placeholder="Enter an Entry"
-            />
-            <input
-                id="price"
-                type="text"
-                name="price"
-                placeholder="Enter a price"
-            />
-            <input type="submit" value="Submit" />
-        </form>
+        <header id="datetime"></header>
+        <main>
+            <form onsubmit="submitForm(event)" method="post">
+                <input
+                    id="entryName"
+                    type="text"
+                    name="entryName"
+                    placeholder="Enter an Entry"
+                />
+                <input
+                    id="price"
+                    type="text"
+                    name="price"
+                    placeholder="Enter a price"
+                />
+                <input type="submit" value="Submit" />
+            </form>
+        </main>
 
         <script>
+            function updateDateTime() {
+                const now = new Date();
+
+                document.getElementById("datetime").textContent =
+                    now.toLocaleString();
+            }
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
             async function submitForm(event) {
                 event.preventDefault();
                 const data = new FormData(event.currentTarget);
