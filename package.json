@@ -2,6 +2,9 @@
   "name": "dailyrecords",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+      "dev": "bun run --watch index.ts"
+  },
   "private": true,
   "devDependencies": {
     "@types/bun": "latest"
