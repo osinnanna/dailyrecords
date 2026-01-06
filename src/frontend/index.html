@@ -29,6 +29,16 @@
                 const payload = Object.fromEntries(data.entries());
 
                 console.log("Payload payload", payload);
+                const response = await fetch("/insertEntry", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+
+                let resultText = await response.text();
+
+                console.log("The server returned: ", resultText);
+                alert("Check console for response");
             }
         </script>
     </body>
