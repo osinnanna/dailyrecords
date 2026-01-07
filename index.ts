@@ -16,6 +16,7 @@ const server = serve({
     },
     async fetch(req) {
         const url = new URL(req.url);
+        // Insert Entry
         if (url.pathname === "/insertEntry" && req.method === "POST") {
             const data = await req.json();
 
@@ -43,6 +44,19 @@ const server = serve({
             } catch (error) {
                 console.error("Failed to insert record", error);
                 return new Response("Database error", { status: 500 });
+            }
+        }
+        // Fetch all entries
+        if (url.pathname === "/api/entries" && req.method === "GET") {
+            try {
+                const fetchAllEntries = db
+                    .query<Entry, []>(`SELECT * FROM entry`)
+                    .all();
+                return new Response(JSON.stringify(fetchAllEntries), {
+                    status: 200,
+                });
+            } catch (error) {
+                console.error("There was an error fetching the data", error);
             }
         }
         return new Response("Not Found", { status: 404 });
