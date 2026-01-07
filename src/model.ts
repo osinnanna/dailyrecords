@@ -1,5 +1,5 @@
 export interface Entry {
     entryName: string;
-    price: Number;
+    price: number;
     timestamp: string;
 }
