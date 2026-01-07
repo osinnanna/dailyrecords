@@ -1,5 +1,7 @@
 import { serve } from "bun";
+import navbar from "./src/frontend/navbar.html";
 import homepage from "./src/frontend/index.html";
+import dashboard from "./src/frontend/dashboard.html";
 import type { Entry } from "./src/model";
 import { db, createTable } from "./src/db";
 
@@ -9,6 +11,8 @@ const server = serve({
     port: 3000,
     routes: {
         "/": homepage,
+        "/navbar": navbar,
+        "/dashboard": dashboard,
     },
     async fetch(req) {
         const url = new URL(req.url);
