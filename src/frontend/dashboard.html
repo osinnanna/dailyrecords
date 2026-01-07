@@ -10,5 +10,35 @@
     <body>
         <div id="navbar"></div>
         <h1>Hello Dashboard</h1>
+
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="data-body"></tbody>
+        </table>
+        <script>
+            fetch("/api/entries")
+                .then((response) => response.json())
+                .then((data) => {
+                    const tbody = document.getElementById("data-body");
+                    data.forEach((entry) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                          <td>${entry.timestamp}</td>
+                          <td>${entry.id}</td>
+                          <td>${entry.entryName}</td>
+                          <td>${entry.price}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch((err) => console.error("Error fetching data", err));
+        </script>
     </body>
 </html>
