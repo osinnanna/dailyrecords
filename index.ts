@@ -12,17 +12,19 @@ const server = serve({
     },
     async fetch(req) {
         const url = new URL(req.url);
-
         if (url.pathname === "/insertEntry" && req.method === "POST") {
-            const data: Entry = await req.json();
-            // console.log(data);
+            const data = await req.json();
+
             let { entryName, price } = data;
+            const trimmedName = entryName.trim();
+            const priceNum =
+                typeof price === "string" ? parseFloat(price) : Number(price);
             let timestamp = new Date().toISOString();
 
-            entryName = entryName.trim();
-            // add more validation logic
+            if (!trimmedName || isNaN(priceNum)) {
+                return new Response("Invalid data", { status: 400 });
+            }
 
-            // insert into database
             try {
                 db.run(
                     `INSERT INTO entry (entryName, price, timestamp) VALUES (?, ?, ?)`,
@@ -31,6 +33,7 @@ const server = serve({
                 console.log(
                     `Entry Name: ${entryName}\nPrice: ${price}\nTimestamp: ${timestamp}`,
                 );
+                console.log("Fetching all db records");
                 console.log(db.query<Entry, []>("SELECT * FROM entry").all());
                 return new Response("Confirmed", { status: 200 });
             } catch (error) {
