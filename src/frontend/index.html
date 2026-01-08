@@ -9,6 +9,7 @@
     </head>
     <body>
         <div id="navbar"></div>
+        <h2 style="text-align: center;">Enter Daily Records Here</h2>
         <main>
             <form onsubmit="submitForm(event)" method="post">
                 <input
@@ -23,6 +24,13 @@
                     name="price"
                     placeholder="Enter a price"
                 />
+                <span><input type="checkbox" name="datetimecheckbox">Would you like to enter a time </span>
+                <input
+                    id="datewithtime"
+                    type="datetime"
+                    name="datewithtime"
+                    placeholder="Enter a Date and Time"
+                >
                 <input type="submit" value="Submit" />
             </form>
         </main>

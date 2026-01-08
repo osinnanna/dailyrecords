@@ -1,7 +1,27 @@
-html {
-    zoom: 3.5;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: oklch(0.5 0 0);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    padding: 3rem;
+}
+
+input {
+    border-radius: 20px;
+    padding: 1rem;
 }

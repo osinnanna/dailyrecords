@@ -1,4 +1,29 @@
 <nav>
-    <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+    </ul>
 </nav>
+
+<style>
+    nav {
+        /*display: block;
+        height: fit-content;*/
+    }
+    ul {
+        display: flex;
+
+        > li {
+            list-style-type: none;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            padding: 2px 4px;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+    }
+</style>
