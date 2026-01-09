@@ -2,10 +2,10 @@ import { serve } from "bun";
 import navbar from "./src/frontend/navbar.html";
 import homepage from "./src/frontend/index.html";
 import dashboard from "./src/frontend/dashboard.html";
-import type { Entry } from "./src/model";
-import { db, createTable } from "./src/db";
+import type { Entry } from "./src/models/entry.model";
+import { db, createTable } from "./src/database/db";
 
-createTable(db);
+createTable();
 
 const server = serve({
     port: 3000,
